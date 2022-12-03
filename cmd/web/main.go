@@ -39,14 +39,13 @@ func main() {
 		snippets: &models.SnippetModel{DB: db},
 	}
 
-	infoLog.Printf("Starting server on %s", *addr)
-
 	srv := &http.Server{
 		Addr:     *addr,
 		ErrorLog: errorLog,
 		Handler:  app.routes(),
 	}
 
+	infoLog.Printf("Starting server on %s", *addr)
 	err = srv.ListenAndServe()
 	errorLog.Fatal(err)
 }
